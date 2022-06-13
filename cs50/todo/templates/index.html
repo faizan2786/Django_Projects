@@ -1,0 +1,16 @@
+{% extends "layout.html" %}  <!-- inherit and extend 'layout.html' template file (in templates folder of this app)-->
+
+{% block body %}  <!-- name of the block to be extended -->
+<h1 >To-Do list:</h1>
+    <ul>
+        {% for task in tasks%} <!-- "tasks" is the input variable passed to this html by django -->
+        <li>{{task}}</li>
+        {% endfor %}
+    </ul> 
+    <br />
+    <a href="{% url 'todo:add' %}"> Add New Task </a>
+    {% comment %}
+        {% url 'todo:add' %} automatically redirects to the url path named 'add' in the 'todo' app
+        (defined by app_name = "todo" in urls.py file of this app
+    {% endcomment %}
+{% endblock %}

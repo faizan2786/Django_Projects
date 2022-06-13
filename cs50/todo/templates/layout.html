@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Tasks </title>
+        <style>
+            body{
+                margin: 20px;
+            }
+            h1 {
+                color: red;
+                text-decoration: underline;
+            }
+            ul{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: x-large;
+            }
+            a{
+                font-size: x-large;
+            }
+        </style>
+    </head>
+    <body>
+        {% block body%}   <!-- define a block which can be implemented by other pages that extend this layout template -->
+        {%endblock%}
+    </body>
+</html>

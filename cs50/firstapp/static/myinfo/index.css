@@ -1,0 +1,78 @@
+/*
+tag_name -> select by tag (applies style to all mentioned tags in the document)
+# -> is an id selector
+. -> is a class selector.
+
+Note:   same classes are generally asscoitated with multiple tags to apply same style on all such tags
+        There can be multiple class assciated with a single tag (separated by space) to apply multiple group of styles on it
+
+*/
+
+#title{
+    margin-bottom: 0px;
+}
+h3{
+    display: inline;
+    margin-top: 0px;
+}
+
+#my-photo {
+    float: left; 
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    margin-right: 2em; /* em is the width of character m in current font and size*/
+    }
+
+body{
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: large;
+    } /* default font family for entire body (in the order of decreasing preference)*/
+
+.contact{
+    margin-top: 1em;
+    margin-bottom: 5px;
+    font-size: medium;
+    font-weight: bold;
+    color: red;
+    overflow-wrap: break-word;
+    }
+
+a{  /* applies to all 'a' tags */
+    font-family: monospace; 
+    font-size: large ;
+    }
+
+/* style when hover mouse over a link */
+a:hover{background-color: lightgreen;}
+
+#intro{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    text-align: justify;
+    }
+
+.shout{
+    color: red;
+    }
+
+.loud{
+    font-family: 'Courier New';
+    text-transform: uppercase;
+    }
+
+/* display all borders for table */
+table, th, td{
+    padding: 5px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    border-collapse: collapse;
+}
+
+th { color: red; }
+
+td:first-child{color: blue;}  /* applies to first column in the table */
+
+/* tr:nth-child(2){color: magenta;} /* applies to second row */
+

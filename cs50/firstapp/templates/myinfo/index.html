@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Faizan's Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- adjust viewport for different devices automatically -->
+        <link type="text/css" rel="stylesheet" href="{% static 'myinfo/index.css' %}"> <!-- django will load css stylesheet index.css from 'myinfo/' in 'static' folder of the app-->
+  </head>
+
+    </head>
+    <body>
+        <img id="my-photo" src="{% static 'myinfo/my-photo.jpg' %}" />
+        <h1 id="title"> </h1>
+        <h3 class="shout"> (Software Engineer) </h3>
+
+        <p class="contact"> Email: <a href="mailto: faizan2786@hotmail.com"> faizan2786@hotmail.com </a></p>
+        <span style="font-weight: bold;">
+            <a href="https://www.linkedin.com/in/faizan-patel-fp2786"><img src="{% static 'myinfo/linkedin.png' %}"></a>
+        </span>
+        
+        <div id="intro">
+            <p>
+                 My name is <span class="loud shout"><strong>Faizan Patel</strong></span>.
+                 I am a <em>Software and AI Engineer</em> working for <span class="shout"> Shelton Vision,</span> a machine vision firm in Leicester, UK.
+                 I have done my <span class="shout"> MSc. in Advanced Computer Science from University of Leicester.</span>
+                 I am very passionate about computing and AI. I am always keen to learn new technologies to improve my knowledge and skills and expand my horizon in the world of computing!
+                 I am open to take on a new challenge in the industry where I can contribute to develpe and maintain large scale intelligent systems using my skills and where I can take my professional software developemnt experience to a new level!
+                 <span class="shout" >You can reach out to me via e-mail or LinkedIn given above.</span>
+            </p>
+        </div>
+        
+        <div id="experience">
+            <h4 class="shout">List of few projects that I have worked on:</h4>
+            <ul>
+                <li> Computer vision system for Pattern fabric inspection </li>
+                <li> Defect Classification using Convolutional Neural Network </li>
+                <li> Mobile application to access defect library </li>
+                <li> Desktop application for fabric orientation detection </li>
+            </ul>
+
+            <h4 class="shout">Technical skills: </h4>
+            <table>
+                <tr>
+                    <th>Language</th>
+                    <th>Proficiency</th>
+                </tr>
+                <tr>
+                    <td>C++</td>
+                    <td>Advanced</td>
+                </tr>
+                <tr>
+                    <td>Python</td>
+                    <td>Advanced</td>
+                </tr>
+                <tr>
+                    <td> C# </td>
+                    <td> Intermediate </td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>Beginner</td>
+                </tr>
+                <tr>
+                    <td> HTML + CSS </td>
+                    <td> Basic </td>
+                </tr>
+            </table>
+            <h4 class="shout"> Here are the tools/libraries/frameworks that I am familier with: </h4>
+            <ul>
+                <li> OpenCV </li>
+                <li> Qt </li>
+                <li> AWS </li>
+                <li> Numpy </li>
+                <li> Tensorflow </li>
+                <li> Pytorch </li>
+                <li> WPF </li>
+                <li> Web Development </li>
+                <li> Sql Server </li>
+            </ul>
+        </div>
+
+        <script src="./index.js"></script>
+    </body>
+</html>

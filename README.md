@@ -6,4 +6,5 @@ This folder contains web apps taught in ["CS50’s Web Programming with Python a
 Currently there are 3 web-apps as below:
 - **firstapp**: A "Hello World" Django app "greet" page which greets the user with provided name in the url.
 - **newyear**: Displays "YES" or "NO" if today's date is new year or not.
-- **todo**: A simple to-do list app which allows users to add and view tasks as a list. (This app demonstrates slight advanced usage of Django framework to create web-apps)
+- **todo**: A simple to-do list app which allows users to add and view tasks as a list -> This app demonstrates slight advanced usage of Django framework to create web-apps.
+- **flights**: A flight app which shows list of flights and also shows detailed info of each flight -> This app demonstrates the usage of sqlite database using **django models** - an ORM (Object Relational Mapping) feature of django to manipulate underlying database tables using python objects

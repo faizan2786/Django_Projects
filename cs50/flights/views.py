@@ -8,5 +8,12 @@ def index(request):
     })
 
 def flight(request, flight_id):
+    
     flight = Flights.objects.get(pk = flight_id)  # get the flight object from input flight id
-    return render(request, 'flights/flight.html', {'flight': flight})
+    passengers  = flight.passengers.all() # get all passengers for given flight 
+                                          #(here, .passengers method is available bacause of the related_name field we added in the Passenger model) 
+
+    return render(request, 'flights/flight.html', {
+        'flight': flight,
+        'passengers': passengers
+        })

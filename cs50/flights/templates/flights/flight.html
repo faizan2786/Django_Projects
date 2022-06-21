@@ -8,6 +8,14 @@
     <li>Destination: {{flight.destination}} </li>
     <li>Duration: <span style="color: red;"> {{flight.duration}} minutes </span> </li>
 </ul>
+<h3> Passengers </h3>
+<ul>
+    {% for p in passengers %}
+    <li> {{p}} </li>  
+    {% empty %}
+    <li> No Passengers exist </li>
+    {% endfor %}
+</ul>
 
 <a href="{% url 'flights:index' %}"> Go back to all flights </a>
 

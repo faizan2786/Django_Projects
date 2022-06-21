@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'firstapp',  # newly created web-app
     'newyear',
     'todo',
+    'flights',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

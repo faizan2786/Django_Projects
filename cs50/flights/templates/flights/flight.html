@@ -16,7 +16,20 @@
     <li> No Passengers exist </li>
     {% endfor %}
 </ul>
-
+<h3> Add Passengers </h3>
+<form action="{% url 'flights:booking' flight.id %}" method='post'>
+    {% csrf_token %}
+    <select name="passenger" id="">
+        {% for p in non_passengers %}
+        <option value="{{p.id}}"> {{p}} </option>    {% comment %} 
+                                                    each option is the passenger's name (object p's string value) 
+                                                    and its value (for submission) going to be its id 
+                                                    {% endcomment %}
+        {% endfor %}
+        <input type='submit' style="margin-left: 1em; size: ">
+    </select>
+</form>
+<br/>
 <a href="{% url 'flights:index' %}"> Go back to all flights </a>
 
 {% endblock %}

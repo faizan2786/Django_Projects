@@ -6,6 +6,7 @@
 *.log
 *.pot
 *.pyc
+*.zip
 __pycache__/
 **/00*.py
 local_settings.py

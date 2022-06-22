@@ -21,5 +21,6 @@ urlpatterns = [
     path('firstapp/', include("firstapp.urls")), # include all urls from the firstapp app(module)
     path('newyear/', include("newyear.urls")),
     path('todo/', include("todo.urls")),
-    path('flights/', include("flights.urls"))
+    path('flights/', include("flights.urls")),
+    path('users/',include("users.urls"))
 ]

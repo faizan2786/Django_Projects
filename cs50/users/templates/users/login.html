@@ -1,0 +1,21 @@
+{% extends 'users/layout.html' %}
+
+{%block body %}
+
+<form action={% url 'users:login' %} method = 'post' style="display:block; margin-top: 30px">
+    {% csrf_token %}
+
+    <p>
+    <input type='text' name='username' placeholder='Username' style='font-size: 20px'/>
+    <br/>
+    <input type='password' name='password' placeholder='Password' style='font-size: 20px;' />
+    </p>
+    <p>
+    <input type='submit' value = "Login" style="width: 6em; font-size: x-large; cursor: pointer" />
+    </p>
+</form>
+{% if message %}
+    <p style="color: red; font-family: helvetica, sans-serif;"> {{message}} </p>
+{% endif %}
+
+{% endblock %}

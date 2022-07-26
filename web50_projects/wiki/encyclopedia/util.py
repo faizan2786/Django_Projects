@@ -22,8 +22,9 @@ def list_matching_entries(query: str):
     Returns a list of all names of encyclopedia entries matching the query string.
     """
     _, filenames = default_storage.listdir("entries")
-    entries = list(sorted(re.sub(r"\.md$", "", filename)
-                for filename in filenames if filename.endswith(".md") and query.lower() in filename.lower()))   # return sorted list of filenames ending with .md by removing its extension
+    entries = list(sorted(re.sub(r"\.md$", "", filename) for filename in filenames 
+                            if filename.endswith(".md") and 
+                            query.lower() in filename.lower()))   # return sorted list of filenames ending with .md by removing its extension
 
     return entries
 

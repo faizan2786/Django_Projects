@@ -43,8 +43,7 @@ def search(request):
         if query in entries:
             return HttpResponseRedirect(reverse('wiki', args = (query,)))
         else:
-
-            # create a list of entries that has query as a substring in its name
+            # get a list of entries that has query as a substring in its name
             entries = util.list_matching_entries(query)
 
             if not entries:  # if entries is empty (no entries matched with the query)

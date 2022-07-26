@@ -1,5 +1,6 @@
-from django.http import Http404, HttpResponseNotFound
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 import markdown2
 
 from . import util
@@ -17,8 +18,7 @@ def wiki(request, entry_name):
         # get the entry content from list of entries
         # return error if entry doesn't exist
 
-        entries = util.list_entries()
-        entries = [e.lower() for e in entries]
+        entries = util.list_entries(True)
 
         if entry_name.lower() not in entries:
             raise Http404(f"Requested wikipedia entry '{entry_name}' not found!")
@@ -33,4 +33,27 @@ def wiki(request, entry_name):
                     }
 
             return render(request, 'encyclopedia/wiki.html', args);  
+
+def search(request):
+    if request.method == 'POST':
+        query = (request.POST['query']).lower() # get the value of query string
+
+        entries = util.list_entries(True)
+
+        if query in entries:
+            return HttpResponseRedirect(reverse('wiki', args = (query,)))
+        else:
+
+            # create a list of entries that has query as a substring in its name
+            entries = util.list_matching_entries(query)
+
+            if not entries:  # if entries is empty (no entries matched with the query)
+                raise Http404(f"No entries found for input query '{query}'")
+            else:
+                return render(request, 'encyclopedia/search.html', {'entries': entries, 'query': query})
+            
+
+
+
+
 

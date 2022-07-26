@@ -35,6 +35,11 @@ def wiki(request, entry_name):
             return render(request, 'encyclopedia/wiki.html', args);  
 
 def search(request):
+    """
+    getting a post request on this method will either render the requested page if an exact entry is found
+    OR it will show a page with list of all matching entries to the query string. 
+    It throws HTTP 404 error if no match is found.
+    """
     if request.method == 'POST':
         query = (request.POST['query']).lower() # get the value of query string
 

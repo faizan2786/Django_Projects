@@ -1,0 +1,43 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+
+{% if entry%}  <!-- if entry already exists -> means user is editing an existig entry -->
+Edit Entry
+{% else %}
+Add a New Entry
+{% endif %}
+
+{%endblock%}
+
+{% block body%}
+
+{% if entry %} 
+<h1> Edit entry </h1>
+{% else %}
+<h2> Add a new wiki entry </h2>
+{% endif %}
+
+
+<form action="{% url 'edit' %}" method = 'post'>
+
+{% if entry %} 
+<p><label> <span style='color: red'>Entry name: </span> {{entry}} </label> </p>
+{% else %}
+<p><input type='text' placeholder='Enter entry title here' name='title' /></p>
+
+{% endif %}
+
+
+<!--populate the text-area for existing entry-->
+{% if entry %} 
+<textarea class="form-control col-lg-10 col-md-9"  rows="20" name="entry_details"> {{entry_details}} </textarea>   <!-- apply form control to control text-area width according to given col dimensions (using the same value from layout page)-->
+{% else %}
+<textarea  class="form-control col-lg-10 col-md-9" rows="20"  name="entry_details" placeholder="Start writing markdown for your entry here..."></textarea>
+{% endif %}
+
+<br>
+<input class = "col-lg-auto col-md-auto" type='submit' value='Submit Entry data'/> <!-- use as many cols as it needs (in bootstrap grid model)-->
+</form>
+
+{% endblock %}

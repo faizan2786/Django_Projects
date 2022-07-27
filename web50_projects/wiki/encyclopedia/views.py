@@ -61,6 +61,8 @@ def show_random(request):
 
     return render_entry_page(request, entry)
 
+def render_edit_entry_page(request):
+    return render(request, 'encyclopedia/add.html')
 
 def render_entry_page(request, entry_name):
     entry_content_html = util.get_entry_html(entry_name)

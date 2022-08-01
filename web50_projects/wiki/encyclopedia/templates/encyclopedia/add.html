@@ -19,10 +19,10 @@ Add a New Entry
 {% endif %}
 
 
-<form action="{% url 'edit' %}" method = 'post'>
-
+<form action="{% url 'save' %}" method = 'post'>
+{% csrf_token %}
 {% if entry %} 
-<p><label> <span style='color: red'>Entry name: </span> {{entry}} </label> </p>
+<p><input type='text' name='title' readonly> <span style='color: red;'> {{entry}} </span></input> </p>
 {% else %}
 <p><input type='text' placeholder='Enter entry title here' name='title' /></p>
 

@@ -1,8 +1,8 @@
 import random
-import re
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from numpy import tile
 
 
 from . import util
@@ -49,20 +49,35 @@ def search(request):
             else:
                 return render(request, 'encyclopedia/search.html', {'entries': entries, 'query': query})
             
-
-
 def show_random(request):
     """Shows a random entry page from available encyclopedia entry"""
-
     entries = util.list_entries()
-    
     # choose an entry at random
     entry = random.choice(entries)
-
     return render_entry_page(request, entry)
 
-def render_edit_entry_page(request):
+def add_entry(request):
+    """Method to add a new wiki entry page"""
     return render(request, 'encyclopedia/add.html')
+
+def edit_entry(request, entry_name):
+    """Method to edit existing wikipedia entry page"""
+    entry_content_html = util.get_entry_html(entry_name)
+    args = {
+            'entry_name': entry_name,
+            'entry_content': entry_content_html
+            }
+    return render(request, 'encyclopedia/add.html', args)
+
+def save_entry(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        entry_details = request.POST['entry_details']
+        entry_details = '# ' + title + '\n\r' + entry_details   # add title on the first line
+
+        # save the new entry content and render the page
+        util.save_entry(title, entry_details) 
+        return HttpResponseRedirect(reverse('wiki', args = (title,)))
 
 def render_entry_page(request, entry_name):
     entry_content_html = util.get_entry_html(entry_name)

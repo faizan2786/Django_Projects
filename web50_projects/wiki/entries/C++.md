@@ -1,0 +1,2 @@
+# C++
+It's one of the most powerful programming languages out there. It is a **superset** of low-level programming language C. It provides *high-level language functionalities* like **classes and generics (templates)**  to take advantage of object-oriented programming while providing **performance and memory management** like a *low-level programming language.* It is mainly used in high-performance computing like Game development, GUI development, real-time industrial product development etc.

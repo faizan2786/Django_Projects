@@ -23,11 +23,11 @@ Add a New Entry
 {% csrf_token %}
 {% if entry %} 
 <p><input type='text' name='title' readonly> <span style='color: red;'> {{entry}} </span></input> </p>
+<input type='text' name='page_type' style='visibility: collapse;' value = 'edit'></input>
 {% else %}
 <p><input type='text' placeholder='Enter entry title here' name='title' /></p>
-
+<input type='text' name='page_type' style='visibility: collapse;' value = 'add'></input>
 {% endif %}
-
 
 <!--populate the text-area for existing entry-->
 {% if entry %} 

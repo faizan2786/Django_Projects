@@ -1,7 +1,10 @@
 import random
+from urllib.error import HTTPError
+from xml.dom import ValidationErr
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.core.exceptions import PermissionDenied, ValidationError
 from numpy import tile
 
 
@@ -73,10 +76,19 @@ def save_entry(request):
     if request.method == 'POST':
         title = request.POST['title']
         entry_details = request.POST['entry_details']
-        entry_details = '# ' + title + '\n\r' + entry_details   # add title on the first line
+        content = '# ' + title + '\n\r' + entry_details   # add title on the first line
 
+        page_type = request.POST['page_type']
+
+        # if page type is to add a new entry -> return error when existing title found
+        if page_type=='add':
+            if title.lower() in util.list_entries(True):
+                raise PermissionDenied(f"Added title '{title}' already exists in the encyclopedia!")
+            elif entry_details == "":
+                raise ValidationError("Title content empty!")
+                
         # save the new entry content and render the page
-        util.save_entry(title, entry_details) 
+        util.save_entry(title, content) 
         return HttpResponseRedirect(reverse('wiki', args = (title,)))
 
 def render_entry_page(request, entry_name):

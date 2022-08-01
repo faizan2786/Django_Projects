@@ -1,0 +1,2 @@
+# Machine Learning
+A special branch of **Artificial Intelligence** that deals with enabling the computers to learn specific tasks by **leveraging data** without explicitely programming the task. Its very useful in statistical modelling, Computer VIsion, Natural Language processing etc.

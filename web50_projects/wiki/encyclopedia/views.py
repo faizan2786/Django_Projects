@@ -46,10 +46,12 @@ def search(request):
             # get a list of entries that has query as a substring in its name
             entries = util.list_matching_entries(query)
 
+            '''
             if not entries:  # if entries is empty (no entries matched with the query)
                 raise Http404(f"No entries found for input query '{query}'")
             else:
-                return render(request, 'encyclopedia/search.html', {'entries': entries, 'query': query})
+            '''
+            return render(request, 'encyclopedia/search.html', {'entries': entries, 'query': query})
             
 def show_random(request):
     """Shows a random entry page from available encyclopedia entry"""

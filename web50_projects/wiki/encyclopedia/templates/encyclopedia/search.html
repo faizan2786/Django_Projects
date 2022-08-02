@@ -6,11 +6,15 @@
 
 {% block body %}
 
-    <h3> Search results for '{{query}}' </h3>
-    <ul>
-        {% for e in entries %}
-            <li> <a href="{% url 'wiki' e %}"> {{e}} </a> </li> 
-        {% endfor %}
-    </ul>
+    {% if entries %}
+        <h3> Search results for '{{query}}' </h3>
+        <ul>
+            {% for e in entries %}
+                <li> <a href="{% url 'wiki' e %}"> {{e}} </a> </li> 
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3> Oops! search result for <span style="color: red;"> '{{query}}' </span> did not match any entries. </h3>
+    {% endif %}
 
 {% endblock %}

@@ -4,6 +4,12 @@
     {{entry_name}}
 {% endblock %}
 
-{% block body %}
+{% block body %} 
+<p>
     {{entry_content|safe}}  <!-- render html version of entry content (indicating operation as safe) received as a string paramter -->
+</p>
+<div style="margin-top: 20px;">
+    <a  style="font-size: smaller; font-style: italic; color: grey;" href="{% url 'edit' entry_name %}"> Edit this page </a>
+</div>
+
 {% endblock %}

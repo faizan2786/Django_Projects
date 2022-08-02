@@ -5,7 +5,6 @@ from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.core.exceptions import PermissionDenied, ValidationError
-from numpy import tile
 
 
 from . import util
@@ -65,10 +64,10 @@ def add_entry(request):
 
 def edit_entry(request, entry_name):
     """Method to edit existing wikipedia entry page"""
-    entry_content_html = util.get_entry_html(entry_name)
+    entry_content= util.get_entry(entry_name)
     args = {
-            'entry_name': entry_name,
-            'entry_content': entry_content_html
+            'entry':entry_name,
+            'entry_details':entry_content
             }
     return render(request, 'encyclopedia/add.html', args)
 
@@ -76,7 +75,6 @@ def save_entry(request):
     if request.method == 'POST':
         title = request.POST['title']
         entry_details = request.POST['entry_details']
-        content = '# ' + title + '\n\r' + entry_details   # add title on the first line
 
         page_type = request.POST['page_type']
 
@@ -85,16 +83,17 @@ def save_entry(request):
             if title.lower() in util.list_entries(True):
                 raise PermissionDenied(f"Added title '{title}' already exists in the encyclopedia!")
             elif entry_details == "":
-                raise ValidationError("Title content empty!")
+                raise PermissionDenied("Entry details empty!")
                 
         # save the new entry content and render the page
-        util.save_entry(title, content) 
+        entry_details = "\n".join(entry_details.splitlines())
+        util.save_entry(title, entry_details) 
         return HttpResponseRedirect(reverse('wiki', args = (title,)))
 
 def render_entry_page(request, entry_name):
     entry_content_html = util.get_entry_html(entry_name)
     args = {
-            'entry_name': entry_name.title(),
+            'entry_name': entry_name,
             'entry_content': entry_content_html
             }
 

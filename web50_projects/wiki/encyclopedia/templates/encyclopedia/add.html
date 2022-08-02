@@ -22,16 +22,16 @@ Add a New Entry
 <form action="{% url 'save' %}" method = 'post'>
 {% csrf_token %}
 {% if entry %} 
-<p><input type='text' name='title' readonly> <span style='color: red;'> {{entry}} </span></input> </p>
+<p> <input type='text' name='title'  value={{entry}} style='color: red;' readonly> </input> </p>
 <input type='text' name='page_type' style='visibility: collapse;' value = 'edit'></input>
 {% else %}
 <p><input type='text' placeholder='Enter entry title here' name='title' /></p>
-<input type='text' name='page_type' style='visibility: collapse;' value = 'add'></input>
+<input type='text' name='page_type' style='visibility: collapse;' value = 'add' />
 {% endif %}
 
 <!--populate the text-area for existing entry-->
 {% if entry %} 
-<textarea class="form-control col-lg-10 col-md-9"  rows="20" name="entry_details"> {{entry_details}} </textarea>   <!-- apply form control to control text-area width according to given col dimensions (using the same value from layout page)-->
+<textarea class="form-control col-lg-10 col-md-9"  rows="20" name="entry_details">{{entry_details}}</textarea>   <!-- apply form control to control text-area width according to given col dimensions (using the same value from layout page)-->
 {% else %}
 <textarea  class="form-control col-lg-10 col-md-9" rows="20"  name="entry_details" placeholder="Start writing markdown for your entry here..."></textarea>
 {% endif %}
